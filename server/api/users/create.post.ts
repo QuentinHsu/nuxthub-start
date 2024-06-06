@@ -1,5 +1,8 @@
+import { UserSchema } from '~/server/database/schema'
+
 export default eventHandler(async (event) => {
   try {
+    await readValidatedBody(event, UserSchema.parse)
     const user = await readBody(event)
 
     const db = hubDatabase()
@@ -8,13 +11,16 @@ export default eventHandler(async (event) => {
       .bind(user.username, user.name, user.email, user.picture, Date.now(), Date.now())
       .run()
 
-    return {}
+    return {
+      status: 201,
+      message: 'Created',
+    }
   }
   catch (error: any) {
     return {
       status: 400,
       message: 'Bad Request',
-      error: error.message,
+      error: JSON.parse(error.message),
     }
   }
 })
