@@ -17,10 +17,18 @@ export default eventHandler(async (event) => {
     }
   }
   catch (error: any) {
+    function getErrorMessage(error: any) {
+      try {
+        return JSON.parse(error.message)
+      }
+      catch {
+        return error.message
+      }
+    }
     return {
       status: 400,
       message: 'Bad Request',
-      error: JSON.parse(error.message),
+      error: getErrorMessage(error),
     }
   }
 })
