@@ -2,13 +2,14 @@
 const { data: messages, refresh } = await useFetch('/api/messages')
 const newMessage = ref('')
 
-async function sendMessage (){
-  if (!newMessage.value.trim()) return
+async function sendMessage() {
+  if (!newMessage.value.trim())
+    return
   await $fetch('/api/messages', {
     method: 'POST',
     body: {
-      text: newMessage.value
-    }
+      text: newMessage.value,
+    },
   })
   newMessage.value = ''
   await refresh()

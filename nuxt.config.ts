@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxthub/core', "@nuxt/eslint"],
+  modules: ['@nuxthub/core', '@nuxt/eslint'],
   hub: {
     database: true,
     kv: true,
@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   nitro: {
     experimental: {
       // Enable Server API documentation within NuxtHub
-      openAPI: true
-    }
-  }
+      openAPI: true,
+    },
+  },
 })
