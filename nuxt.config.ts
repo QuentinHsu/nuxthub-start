@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxthub/core', '@nuxt/eslint'],
+  modules: ['@nuxthub/core'],
   hub: {
     database: true,
     kv: true,
@@ -13,5 +13,8 @@ export default defineNuxtConfig({
       // Enable Server API documentation within NuxtHub
       openAPI: true,
     },
+  },
+  runtimeConfig: {
+    authToken: 'quentin_local_token',
   },
 })
